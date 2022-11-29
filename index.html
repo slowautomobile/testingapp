@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Презентација ФТН Чачак</title>
+    <style>
+      html {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      }
+
+      body {
+        margin: 0;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .banner-wrapper {
+        height: 100vh;
+      }
+
+      #background-video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -2;
+      }
+
+      .hero-container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        flex-wrap: nowrap;
+        z-index: -1;
+      }
+
+      .topnav {
+        position: fixed;
+        top: 0px;
+        right: -100vw;
+        overflow-y: visible;
+        background-color: #1D2731;
+        width: 100%;
+        z-index: 3;
+        transition: right 0.2s;
+      }
+
+      .toggle-topnav {
+        background-color: transparent;
+        border: none;
+        padding: 0.8em;
+        font-size: 18px;
+        color: white;
+        width: 50px;
+      }
+
+      .dropbtn {
+        background-color: #1D2731;
+        color: white;
+        padding: 0.5em;
+        font-size: 16px;
+        border: none;
+        min-width: 70px;
+        transition: padding 0.2s;
+        z-index: -1;
+        line-height: 2.2em;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        min-width: 200px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2) z-index: 4;
+        left: 0;
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: #ffffff;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        background-color: rgba(29, 39, 49, 0.801);
+      }
+
+      .dropdown-content a:hover {
+        background-color: #328CC1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+        top: 51px;
+      }
+
+      .dropdown:hover .dropbtn {
+        background-color: #328CC1;
+        padding: 0.5em 0.3em 0.5em 0.7em;
+        cursor: pointer;
+      }
+
+      .header-search {
+        margin: 4px;
+        width: 220px;
+        float: right;
+        height: 44px;
+        padding: 0 0.6em;
+        background-color: #ffffff;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .header-search input {
+        flex: 1 1 30px;
+        height: 2em;
+        width: 105px;
+        margin: 0.3em 0.3em 0.3em 0;
+      }
+
+      .header-search span {
+        flex: 1 1 50px;
+        text-align: center;
+        margin: 0.3em auto;
+        font-size: small;
+      }
+
+      .header-search i {
+        margin-right: 0.6em;
+      }
+
+      .menu {
+        position: fixed;
+        top: 0;
+        right: -50px;
+        width: 50px;
+        height: 50px;
+        padding: 0.8em;
+        background-color: #969696;
+        z-index: 10;
+        text-align: left;
+        vertical-align: middle;
+        transition: right 0.3s, width 0.3s, background-color 0.3s;
+      }
+
+      .menu:hover {
+        width: 70px;
+        background-color: #1d2731af;
+        cursor: pointer;
+      }
+
+      .menu:active {
+        background-color: #328CC1;
+      }
+
+      .menu img {
+        width: 25px;
+      }
+
+      .logo img {
+        width: 23vw;
+        margin: auto;
+      }
+
+      .logo-text {
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: 900;
+      }
+
+      header {
+        color: white;
+        text-align: center;
+        font-size: 2.5vw;
+      }
+
+      .main-flex {
+        height: 100vh;
+        padding: 4em 3em 2em 3em;
+        background: center / cover url('images/studenti-u-amfiteatru-cartoon-news2-4.jpg');
+        background-color: darkblue;
+        color: white;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .main-flex h1 {
+        flex: 1;
+        font-weight: 900;
+        font-size: 4vw;
+        text-align: center;
+      }
+
+      .main-flex p {
+        flex: 2;
+        font-size: 6vw;
+        font-style: italic;
+        font-weight: 900;
+        text-align: center;
+        text-shadow: 4px 5px #0B3C5D;
+      }
+
+      .explore {
+        margin: auto;
+      }
+
+      .explore h3 {
+        text-align: center;
+        padding: 0.5em;
+        background-color: ;
+        background-color: rgba(34, 43, 52, 0.562);
+        box-shadow: -3px 3px #D9B310;
+        width: max-content;
+        margin: 1em auto;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 0px;
+        align-items: stretch;
+        justify-items: stretch;
+
+      }
+
+      .grid-item {
+        border-right: 3px solid #D9B310;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        height: 4em;
+        overflow: hidden;
+        transition: background-color 0.2s;
+      }
+
+      .grid-item:last-of-type {
+        border: none;
+      }
+
+      .grid-item a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+        display: block;
+        padding: 1.5em 1em;
+        transition: color 0.2s;
+      }
+
+      .grid-item:hover {
+        background-color: #D9B310;
+      }
+
+      .grid-item:hover a {
+        color: #1D2731;
+      }
+
+      .blog {
+        background: center / cover url('images/blog-background.jpg');
+        padding: 3em 4em 1em 4em;
+        overflow-y: visible;
+      }
+
+      .main-news {
+        position: relative;
+        width: 100%;
+      }
+
+      .outline {
+        border: 2px solid #D9B310;
+        position: absolute;
+        top: 0.7em;
+        left: -0.7em;
+        width: 62.3vw;
+        height: 33vw;
+        z-index: 2;
+      }
+
+      .main-news>img {
+        position: relative;
+        width: 60vw;
+        transition: transform 0.3s;
+      }
+
+      .news-text {
+        width: 34.4vw;
+        max-height: max-content;
+        position: absolute;
+        top: 9vw;
+        left: 55vw;
+        z-index: 2;
+        box-shadow: -6px 5px #328dc185;
+      }
+
+      .news {
+        background-color: #fff;
+        padding: 1em;
+      }
+
+      .news h4 {
+        padding-bottom: 0.3em;
+        transition: color 0.2s;
+      }
+
+      .news h4:first-of-type {
+        color: #328CC1;
+      }
+
+      .news h4:last-of-type:hover {
+        color: #328CC1;
+        cursor: pointer;
+      }
+
+      .date {
+        color: grey;
+        font-size: smaller;
+      }
+
+      .text {
+        font-size: small;
+      }
+
+      .news-text p {
+        padding-bottom: 0.3em;
+      }
+
+      .news-grid {
+        display: flex;
+        position: relative;
+        margin: 2em auto;
+        width: 100%;
+        height: fit-content;
+        gap: 1em;
+        justify-content: space-evenly;
+        align-items: flex-start;
+      }
+
+      .thumbnail {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .news-grid img {
+        width: 100%;
+        max-height: 10em;
+        transition: transform 0.3s;
+      }
+
+      .news-grid img:hover {
+        transform: scale(1.05);
+      }
+
+      .news-grid .news {
+        margin: -15px auto 0 auto;
+        position: relative;
+        width: 80%;
+      }
+
+      .more {
+        width: fit-content;
+        position: relative;
+        padding-bottom: 40px;
+        margin: auto;
+      }
+
+
+      .more a {
+        border: 3px solid #1D2731;
+        padding: 0.5em 2em;
+        text-decoration: none;
+        display: block;
+        color: #1D2731;
+        font-weight: 700;
+        transition: color 0.2s, background-color 0.2s;
+      }
+
+      .more a:hover {
+        background-color: #1D2731;
+        color: #ffffff;
+        border: 3px transparent #1D2731;
+
+      }
+
+      .social-wrapper {
+        padding-bottom: 2em auto;
+      }
+
+      .separator {
+        background-color: #0B3C5D;
+        height: 0.1em;
+      }
+
+      .social-feed {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(fit-content, auto);
+        justify-items: center;
+        align-items: center;
+        gap: 0;
+      }
+
+      .feed-img {
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        width: 100%;
+        max-height: 100%;
+        position: relative;
+      }
+
+      .feed-img img {
+        width: 200%;
+        transition: transform 0.2s;
+      }
+
+      .feed-img img:hover {
+        transform: scale(1.09);
+        cursor: pointer;
+      }
+
+      .feed-img .fa-instagram {
+        position: absolute;
+        bottom: 0.5em;
+        left: 0.5em;
+        font-size: 1.49em;
+        line-height: 0.9em;
+        background-color: #fff;
+        padding: 0.3em;
+        border-radius: 50%;
+        color: #0B3C5D;
+      }
+
+      .all-icons {
+        text-align: center;
+        padding: 0.4em;
+        width: 100%;
+        background-color: #ffffff;
+      }
+
+      .all-icons i {
+        padding: 0.2em;
+        margin-right: 0.2em;
+        font-size: 1em;
+        background-color: #0B3C5D;
+        color: #ffffff;
+        border-radius: 20%;
+      }
+
+      .all-icons i:hover {
+        cursor: pointer;
+      }
+
+      .search {
+        background: center/cover url('images/search-background.jpg');
+        padding: 2em;
+      }
+
+      .search-toolbox {
+        margin: 28em auto 2em auto;
+        width: 60vw;
+        padding: 0 0.3em;
+        background-color: #ffffff;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .search-toolbox input {
+        flex: 2 1 160px;
+        height: 2em;
+        margin: 0.3em auto;
+      }
+
+      .search-toolbox span {
+        flex: 1 1 160px;
+        text-align: center;
+        margin: 0.3em auto;
+        cursor: pointer;
+      }
+
+      .search-toolbox i {
+        margin-right: 0.6em;
+      }
+
+      .line {
+        border-bottom: 4px solid #1D2731;
+        width: 38vw;
+        margin: 1em auto;
+      }
+
+      .search-container {
+        width: 40vw;
+        margin: auto;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: stretch;
+      }
+
+      .search-container a {
+        flex: 1 1 100px;
+        color: #E6E5E4;
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        padding: 0.5em 1em;
+        transition: color 0.2s, background-color 0.2s;
+      }
+
+      .search-container a:hover {
+        background-color: #0b3c5db2;
+        color: white;
+      }
+
+      footer {
+        background-color: #0B3C5D;
+        padding: 2em 3em;
+        height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+      }
+
+      footer>* {
+        flex: 1 1 350px;
+      }
+
+      .footer-logo {
+        text-align: center;
+      }
+
+      .footer-logo img {
+        width: 60%;
+
+      }
+
+      .footer-logo-text {
+        text-align: center;
+        margin-top: 0.5em;
+        color: white;
+        font-size: 3vw;
+      }
+
+      .contact {
+        color: white;
+        /* align-self: flex-start; */
+      }
+
+      .contact p {
+        padding: 0.3em 2em;
+      }
+
+      .contact p:first-of-type {
+        font-weight: 900;
+        padding: 0.6em 2em;
+      }
+
+      .contact p:last-of-type {
+        padding: 0.6em 2em;
+      }
+
+      .contact p i {
+        margin-right: 1em;
+      }
+
+      .footer-icons {
+        background-color: none;
+      }
+
+      .footer-icons {
+        text-align: left;
+        padding: 0.4em 2em;
+      }
+
+      .footer-icons i {
+        margin-right: 0.3em;
+      }
+
+      @media (max-width: 1030px) {
+        .dropbtn {
+          width: 100%;
+        }
+
+        .dropdown {
+          width: 100%;
+          float: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+          position: relative;
+          z-index: 999;
+          width: 100%;
+          background-color: #fff;
+          display: block;
+          top: 0px;
+        }
+
+        .header-search {
+          float: none;
+          margin: auto;
+          width: 100%;
+        }
+
+        .header-search input {
+          justify-self: flex-end;
+        }
+
+        .header-search span {
+          justify-self: flex-start;
+          text-align: left;
+          padding-left: 4vw;
+          cursor: pointer;
+        }
+      }
+
+      @media (max-width: 910px) {
+        .main-news {
+          margin-bottom: 80px;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .main-news {
+          margin-bottom: 130px;
+        }
+
+        .news-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: 8em 8em 8em;
+          gap: 0.8em;
+          justify-items: stretch;
+          align-items: stretch;
+        }
+
+        .news-grid .small-thumbnails {
+          height: 15vw;
+          overflow: hidden;
+          padding: 0;
+          background-color: #fff;
+        }
+
+        .news-grid .thumbnail {
+          float: left;
+        }
+
+        .news-grid img {
+          width: 15vw;
+          height: 15vw;
+          object-fit: cover;
+        }
+
+        .news-grid .news {
+          display: inline-block;
+          margin: 0;
+          background-color: #fff;
+          max-width: 100%;
+          height: 100%;
+        }
+
+        .news-text {
+          width: 70vw;
+          top: 25vw;
+          left: 4vw;
+        }
+
+        .social-feed {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 750px) {
+        #background-video {
+          display: none;
+        }
+
+        .menu {
+          right: 0;
+        }
+
+        .small-banner {
+          width: 100vw;
+          height: 100vh;
+          position: fixed;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          z-index: -2;
+          background: center/cover url('images/cacak-centar.jpg');
+          background-position: center;
+        }
+
+        .grid-container {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .grid-item:nth-of-type(3) {
+          border: none;
+        }
+
+        .grid-item:nth-of-type(1),
+        .grid-item:nth-of-type(2),
+        .grid-item:nth-of-type(3) {
+          border-bottom: 2px solid #D9B310;
+        }
+
+        .main-news {
+          margin-bottom: 150px;
+        }
+
+        .news-grid {
+          grid-template-rows: repeat(3, 110px);
+        }
+
+        .news-grid .small-thumbnails {
+          height: 110px;
+        }
+
+        .small-thumbnails img {
+          width: 111px;
+          height: 111px;
+        }
+
+        .news-grid .news {
+          max-height: 110px;
+          max-width: 65%;
+        }
+      }
+
+      @media (max-width: 690px) {
+        .main-news {
+          margin-bottom: 200px;
+        }
+      }
+
+      @media (max-width: 570px) {
+        .grid-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-item:nth-of-type(2) {
+          border-right: none;
+        }
+
+        .grid-item:nth-of-type(3) {
+          border-right: 2px solid #D9B310;
+        }
+
+        .grid-item:nth-of-type(4) {
+          border-bottom: 2px solid #D9B310;
+          border-right: none;
+        }
+
+        .grid-item {
+          background-color: rgba(29, 39, 49, 0.349);
+        }
+
+        .main-news {
+          margin-bottom: 250px;
+        }
+
+        .outline {
+          top: 0.4em;
+          left: -0.4em;
+          width: 62.3vw;
+          height: 33vw;
+        }
+
+        .blog {
+          padding: 2em 2em;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .grid-container {
+          grid-template-columns: 1fr;
+        }
+
+        .grid-item {
+          border-bottom: 2px solid #D9B310;
+          border-right: none;
+          height: 2.5em;
+        }
+
+        .grid-item:nth-of-type(3) {
+          border-right: none;
+        }
+
+        .grid-item a {
+          padding: 0.7em 1em;
+        }
+
+        .main-news {
+          margin-bottom: 280px;
+        }
+
+        .blog {
+          padding: 2em 1em;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="topnav">
+      <button class="toggle-topnav"></button>
+      <div class="dropdown">
+        <button class="dropbtn">Факултет</button>
+
+        <div class="dropdown-content">
+          <a href="">О Факултету</a>
+          <a href="">Историјат</a>
+          <a href="">Акредитација</a>
+          <a href="">Руководство</a>
+          <a href="">Запослени</a>
+          <a href="">Катедре</a>
+        </div>
+
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Академске студије</button>
+        <div class="dropdown-content">
+          <a href="">Основне студије</a>
+          <a href="">Интегрисане студије</a>
+          <a href="">Мастер студије</a>
+          <a href="">Докторске студије</a>
+          <a href="">Докторске дисертације</a>
+          <a href="">Међународна мобилност</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Струковне студије</button>
+        <div class="dropdown-content">
+          <a href="">Основне студије</a>
+          <a href="">Мастер студије</a>
+          <a href="">Међународна мобилност</a>
+          <a href="">Студентска пракса</a>
+          <a href="">Академски календар</a>
+          <a href="">Испитни рокови</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Наука</button>
+        <div class="dropdown-content">
+          <a href="">Научне делатности</a>
+          <a href="">Лабораторије</a>
+          <a href="">Издавачка делатност</a>
+          <a href="">Научни скупови</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Сарадња</button>
+        <div class="dropdown-content">
+          <a href="">Посао и пракса</a>
+          <a href="">Партнери факултета</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Студентски парламент</button>
+        <div class="dropdown-content">
+          <a href="">О нама</a>
+          <a href="">Чланови</a>
+          <a href="">Акције</a>
+          <a href="">Правилници</a>
+        </div>
+      </div>
+
+      <div class="header-search">
+        <input type="text">
+
+        <span><i class="fa-solid fa-magnifying-glass"></i>ПРЕТРАГА</span>
+      </div>
+
+    </nav>
+    <div class="banner-wrapper">
+      <video id="background-video" autoplay loop muted poster="images/promo-video.jpg">
+        <source src="video/promo-video.webm" type="video/webm">
+      </video>
+      <div class="small-banner">
+      </div>
+      <div class="hero-container">
+        <header>
+          <div class="logo">
+            <img src="images/logo-white.png" alt="ftn-cacak-logo">
+          </div>
+          <h1 class="logo-text">ФТН<br>ЧАЧАК</h1>
+        </header>
+      </div>
+    </div>
+
+    <div class="menu"><img src="images/noun-menu-2328386.svg" alt=""></div>
+
+
+    <main class="main-flex">
+      <h1>ДОБРОДОШЛИ НА ФТН!</h1>
+      <p>“ Ако не почнеш,<br>
+        нећеш ни завршити “</p>
+      <section class="explore">
+        <h3>ИСТРАЖИ</h3>
+        <div class="grid-container">
+          <div class="grid-item"><a href="">Факултет</a></div>
+          <div class="grid-item"><a href="">Академске студије</a></div>
+          <div class="grid-item"><a href="">Струковне студије</a></div>
+          <div class="grid-item"><a href="">Наука</a></div>
+          <div class="grid-item"><a href="">Сарадња</a></div>
+          <div class="grid-item"><a href="">Студентски парламент</a></div>
+        </div>
+      </section>
+    </main>
+    <section class="blog">
+      <article class="main-news">
+        <div class="outline"></div>
+        <img class="main-img" src="images/img1.jpg" alt="img1">
+        <div class="news news-text">
+          <h4>CEEPUS</h4>
+          <h4>Успешно реализоване мобилности наставног особља
+          </h4>
+          <p class="date">02.11.2022.</p>
+          <p class="text">У периоду од 23. до 30. октобра 2022. године професор струковних студија Ивана Крсмановић и
+            ванредни професори Бранко Копривица и Марко Росић релизовали су наставничку мобилност у Грацу на
+            Универзитету примењених наука CAMPUS 02.</p>
+        </div>
+      </article>
+
+      <div class="news-grid">
+        <article class="small-thumbnails">
+          <div class="thumbnail"><img src="images/img2.jpg" alt="img1"></div>
+          <div class="news">
+            <h4>ПРИВРЕДА</h4>
+            <h4>Посета Ариљу</h4>
+            <p class="date">01.11.2022.</p>
+            <p class="text">Шта се ради?</p>
+          </div>
+        </article>
+        <article class="small-thumbnails">
+          <div class="thumbnail"><img src="images/img3.jpg" alt="img1"></div>
+          <div class="news">
+            <h4>ЕКСКУРЗИЈА</h4>
+            <h4>Београдски сајам књига</h4>
+            <p class="date">31.10.2022.</p>
+            <p class="text"></p>
+          </div>
+        </article>
+        <article class="small-thumbnails">
+          <div class="thumbnail"><img src="images/img4.jpg" alt="img1"></div>
+          <div class="news">
+            <h4>БУДИМО ХУМАНИ</h4>
+            <h4>Добровољно давање крви</h4>
+            <p class="date">27.10.2022.</p>
+            <p class="text"></p>
+          </div>
+        </article>
+      </div>
+      <div class="more"><a href="">ВИШЕ</a></div>
+    </section>
+    <div class="social-wrapper">
+      <div class="separator"></div>
+      <section class="social-feed">
+        <div class="feed-img">
+          <img src="images/sli1.jpeg" alt="">
+          <i class="fa-brands fa-instagram pos"></i>
+        </div>
+        <div class="feed-img">
+          <img src="images/sli2.jpeg" alt="">
+          <i class="fa-brands fa-instagram pos"></i>
+        </div>
+        <div class="feed-img">
+          <img src="images/sli3.jpeg" alt="">
+          <i class="fa-brands fa-instagram pos"></i>
+        </div>
+        <div class="feed-img">
+          <img src="images/sli4.jpeg" alt="">
+          <i class="fa-brands fa-instagram pos"></i>
+        </div>
+      </section>
+      <div class="all-icons">
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-linkedin"></i>
+        <i class="fa-brands fa-square-youtube"></i>
+        <i class="fa-brands fa-instagram"></i>
+      </div>
+    </div>
+    <section class="search">
+      <div class="search-toolbox">
+        <input type="text">
+
+        <span><i class="fa-solid fa-magnifying-glass"></i>ПРЕТРАГА</span>
+      </div>
+      <p class="line"></p>
+      <div class="search-container">
+        <a href="">Студије</a>
+        <a href="">Запослени</a>
+        <a href="">Документа и обрасци</a>
+        <a href="">Конкурси и стипендије</a>
+      </div>
+    </section>
+    <footer>
+      <div class="footer-logo">
+        <img src="images/logo-white.png"" alt=" ftn-cacak-logo">
+        <h1 class="footer-logo-text">ФТН<br>ЧАЧАК</h1>
+      </div>
+      <div class="contact">
+        <p>Факултет техничких наука у Чачку</p>
+        <p><i class="fa-solid fa-location-dot"></i>Светог Саве 65, 32102 Чачак</p>
+        <p><i class="fa-solid fa-phone"></i>032 302 700</p>
+        <p><i class="fa-solid fa-envelope"></i>dekanat@ftn.kg.ac.rs</p>
+        <div class="footer-icons">
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-linkedin"></i>
+          <i class="fa-brands fa-square-youtube"></i>
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      var prevScrollpos = window.pageYOffset;
+      let navbarElement = document.querySelector('.topnav');
+      let toggleBtn = document.querySelector('.menu');
+
+
+      window.onscroll = function () {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos && window.pageYOffset < 114) {
+          if (window.matchMedia('(min-width: 1030px)').matches) {
+            navbarElement.style.right = '0px';
+            toggleBtn.style.right = '-50px';
+          } else {
+            toggleBtn.style.right = '0px';
+          }
+
+        } else {
+          navbarElement.style.right = '-100vw';
+          toggleBtn.style.right = '0px';
+
+        }
+        prevScrollpos = currentScrollPos;
+      };
+
+      toggleBtn.addEventListener('click', function () {
+        if (navbarElement.style.right === '0px') {
+          navbarElement.style.right = '-100vw';
+        } else {
+          navbarElement.style.right = '0px';
+          if (window.matchMedia('(min-width: 1030px)').matches) {
+            toggleBtn.style.right = '-50px';
+          }
+        }
+      });
+    </script>
+  </body>
+
+</html>
